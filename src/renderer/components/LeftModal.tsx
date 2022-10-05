@@ -39,35 +39,53 @@ function LeftModal({ PHPSESSID, username }: lProps) {
           </div>
 
           <div className="remainingTime" style={{ color: '#E4D1B9' }}>
-            현재 시간 : {currentTime.format('HH시 mm분')}
+            {currentTime.format('HH시 mm분')}
           </div>
         </div>
       </div>
-      <div className="navigate">
-        <div
-          className="inner"
-          id="link-to-weekdayapply"
-          onClick={() => navigate('/weekdayapply')}
-        >
-          평일 자습 신청
+      <div className="navigates">
+        <div className="navigate">
+          <div
+            className="inner"
+            id="link-to-weekdayapply"
+            onClick={() => navigate('/weekdayapply')}
+          >
+            평일 자습 신청
+          </div>
         </div>
-      </div>
-      <div className="navigate">
-        <div
-          className="inner"
-          id="link-to-weekendapply"
-          onClick={() => navigate('/weekendapply')}
-        >
-          주말 자습 신청
+        <div className="navigate">
+          <div
+            className="inner"
+            id="link-to-weekendapply"
+            onClick={() => navigate('/weekendapply')}
+          >
+            주말 자습 신청
+          </div>
         </div>
-      </div>
-      <div className="navigate">
-        <div
-          className="inner"
-          id="score"
-          onClick={() => navigate('/checkscore')}
-        >
-          벌점 내역
+        <div className="navigate">
+          <div
+            className="inner"
+            id="score"
+            onClick={() => navigate('/checkscore')}
+          >
+            벌점 내역
+          </div>
+        </div>
+        <div className="navigate2">
+          <div
+            className="inner2"
+            id="score"
+            onClick={() => navigate('/checkscore')}
+          >
+            info
+          </div>
+          <div
+            className="inner2"
+            id="score"
+            onClick={() => navigate('/checkscore')}
+          >
+            FAQ
+          </div>
         </div>
       </div>
     </div>

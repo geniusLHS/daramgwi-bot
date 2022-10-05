@@ -5,6 +5,7 @@ import log from 'electron-log';
 import axios from 'axios';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import moment from 'moment';
 // import Store from 'electron-store';
 
 export default class AppUpdater {
@@ -112,9 +113,23 @@ ipcMain.on('getScoreList', async (event, arg) => {
   let PHPSESSID = arg[0];
   let memberId = arg[1];
   let grade = 1;
-  if (memberId.startsWith('2022')) grade = 1;
-  if (memberId.startsWith('2021')) grade = 2;
-  if (memberId.startsWith('2020')) grade = 3;
+  let year = moment().format('YYYY');
+  let month = moment().format('MM');
+  if (
+    (memberId.startsWith(year) && Number(month) >= 2) ||
+    (memberId.startsWith(String(Number(year) - 1)) && Number(month) == 1)
+  )
+    grade = 1;
+  if (
+    (memberId.startsWith(String(Number(year) - 1)) && Number(month) >= 2) ||
+    (memberId.startsWith(String(Number(year) - 2)) && Number(month) == 1)
+  )
+    grade = 2;
+  if (
+    (memberId.startsWith(String(Number(year) - 2)) && Number(month) >= 2) ||
+    (memberId.startsWith(String(Number(year) - 3)) && Number(month) == 1)
+  )
+    grade = 3;
 
   axios
     .get(
@@ -160,6 +175,31 @@ ipcMain.on('getWeekdayCurrentState', async (event, arg) => {
     })
     .then((res) => {
       event.reply('reply-getWeekdayCurrentState', res.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+
+ipcMain.on('getWeekendCurrentState', async (event, arg) => {
+  let PHPSESSID = arg[0];
+
+  axios
+    .get('https://djshs.kr/theme/s007/index2/stu_subpg3_1.php', {
+      headers: {
+        // 'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded;',
+        'access-control-allow-credentials': 'true',
+        Cookie: PHPSESSID,
+      },
+      withCredentials: true,
+      maxRedirects: 0,
+      validateStatus: (status) => {
+        return true;
+      },
+    })
+    .then((res) => {
+      event.reply('reply-getWeekendCurrentState', res.data);
     })
     .catch((error) => {
       console.error(error);

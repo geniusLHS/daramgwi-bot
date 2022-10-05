@@ -26,6 +26,8 @@ function WeekdayApplyModal({ PHPSESSID, username, memberId }: lProps) {
   const [currentState, setCurrentState] = useState(['', '...', '...', '...']);
   // setSelectClass(17); //too many rerender error? //리렌더 => 함수 다시 호출 => 리렌더.. 무한반복이라서 그럼
   const [applyProgress, setApplyPregress] = useState(0);
+  // apply progress = 0 : 아무것도 하지 않음
+  // apply progress = 1 : 신청 시도 후 신청 결과 받아오기
 
   useEffect(() => {
     if (applyProgress == 1) {
@@ -60,7 +62,7 @@ function WeekdayApplyModal({ PHPSESSID, username, memberId }: lProps) {
     let resultRaw = arg as string;
 
     let ApplyState = ['none', '1', '2', '3'];
-
+    console.log(resultRaw);
     ApplyState[1] = resultRaw
       .split('야간자습1')[1]
       .split('</td>')[1]

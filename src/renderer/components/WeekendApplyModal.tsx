@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import ApplySelect from './ApplySelect';
 import LeftModal from './LeftModal';
 import WeekdayApplyCheck from './WeekdayApplyCheck';
+import WeekendApplyCheck from './WeekendApplyCheck';
+import WeekendApplyCheckBatch from './WeekendApplyCheckBatch';
+import WeekendApplyCheckDate from './WeekendApplyCheckDate';
+import WeekendApplySelect from './WeekendApplySelect';
 
 interface lProps {
   PHPSESSID: string;
@@ -13,36 +17,64 @@ interface lProps {
 
 const WeekendApplyList = [
   { time: 1, dcls_name: '오전' },
-  { time: 2, dcls_name: '오후' },
-  { time: 3, dcls_name: '야자' },
+  { time: 2, dcls_name: '오후1' },
+  { time: 3, dcls_name: '오후2' },
+  { time: 4, dcls_name: '오후3' },
+  { time: 5, dcls_name: '1자' },
+  { time: 6, dcls_name: '2자' },
+  { time: 7, dcls_name: '3자' },
 ];
 
 function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
-  let sdate = getSdate();
+  let sdate = getSdate()[1]; // not used.
 
   const navigate = useNavigate();
   const [selectClass, setSelectClass] = useState(17);
-  const [selectTime, setSelectTime] = useState([false, false, false, false]); // 첫번째꺼는 상관 없음. 1,2,3번만 사용함
-  const [currentState, setCurrentState] = useState(['', '...', '...', '...']);
-  // setSelectClass(17); //too many rerender error? //리렌더 => 함수 다시 호출 => 리렌더.. 무한반복이라서 그럼
+  const [selectTime, setSelectTime] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]); // 첫번째꺼는 상관 없음. 1~7번만 사용함.
+
+  const [selectWeekend, setSelectWeekend] = useState([false, false, false]);
+  // 토, 일 선택
+
+  const [currentState, setCurrentState] = useState([
+    [],
+    ['', '...', '...', '...', '...', '...', '...', '...'],
+    ['', '...', '...', '...', '...', '...', '...', '...'],
+  ]);
+
   const [applyProgress, setApplyPregress] = useState(0);
 
   useEffect(() => {
     if (applyProgress == 1) {
-      setCurrentState(['', '...', '...', '...']);
+      setCurrentState([
+        [],
+        ['', '...', '...', '...', '...', '...', '...', '...'],
+        ['', '...', '...', '...', '...', '...', '...', '...'],
+      ]);
 
-      for (let time = 1; time <= 3; time++) {
-        if (selectTime[time] == true) {
-          doSelfStudyApply(
-            PHPSESSID,
-            getClosestWeekend(),
-            time,
-            memberId,
-            selectClass
-          );
+      // weekend : 요일
+      for (let weekend = 1; weekend <= 2; weekend++)
+        for (let time = 1; time <= 7; time++) {
+          if (selectWeekend[weekend] && selectTime[time]) {
+            doSelfStudyApply(
+              PHPSESSID,
+              getClosestWeekend()[weekend],
+              time,
+              memberId,
+              selectClass
+            );
+          }
         }
-      }
-      setSelectTime([false, false, false, false]);
+      setSelectTime([false, false, false, false, false, false, false, false]);
+      setSelectWeekend([false, false, false]);
 
       setTimeout(() => {
         getWeekendCurrentState(PHPSESSID);
@@ -64,21 +96,46 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
 
   window.electron.ipcRenderer.once('reply-getWeekendCurrentState', (arg) => {
     let resultRaw = arg as string;
+    console.log(resultRaw);
+    // 토, 일 둘다.
+    let ApplyState = [
+      [],
+      ['none', '1', '2', '3', '4', '5', '6', '7'],
+      ['none', '1', '2', '3', '4', '5', '6', '7'],
+    ];
 
-    let ApplyState = ['none', '1', '2', '3'];
+    let col_name = [
+      '',
+      '오전자습',
+      '오후자습1',
+      '오후자습2',
+      '오후자습3',
+      '야간자습1',
+      '야간자습2',
+      '야간자습3',
+    ];
 
-    ApplyState[1] = resultRaw
-      .split('야간자습1')[1]
-      .split('</td>')[1]
-      .split('<td>')[1];
-    ApplyState[2] = resultRaw
-      .split('야간자습2')[1]
-      .split('</td>')[1]
-      .split('<td>')[1];
-    ApplyState[3] = resultRaw
-      .split('야간자습3')[1]
-      .split('</td>')[1]
-      .split('<td>')[1];
+    // i=1 토요일, i=2 일요일
+    for (let i = 1; i <= 2; i++)
+      for (let j = 1; j <= 7; j++) {
+        let date = ' ';
+
+        if (i == 1) date = '토요일';
+        if (i == 2) date = '일요일';
+
+        ApplyState[i][j] = resultRaw
+          .split(date)[1]
+          .split('신청일 전날 22시까지 신청이 완료되지 않을 경우')[1]
+          .split(col_name[j])[1]
+          .split('</td>')[1]
+          .split('<td>')[1];
+      }
+
+    for (let i = 1; i <= 2; i++)
+      for (let j = 1; j <= 7; j++)
+        if (ApplyState[i][j].indexOf('text-danger') != -1) {
+          ApplyState[i][j] = '-';
+        }
 
     setCurrentState(ApplyState);
     // console.log(ApplyState);
@@ -87,24 +144,29 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
 
   return (
     <div className="WeekendApplyModal">
-      <div className="title">평일 자습 신청</div>
-      <div className="describe">
-        <span className="selectState">신청 여부</span>{' '}
-        <span className="currentState">현재 상태</span>
-      </div>
-      {WeekendApplyList.map((it, idx) => (
-        <WeekdayApplyCheck
+      <div className="title">주말 자습 신청</div>
+      <WeekendApplyCheckDate
+        PHPSESSID={PHPSESSID}
+        sdate={sdate}
+        selectWeekend={selectWeekend}
+        setSelectWeekend={setSelectWeekend}
+      />
+      {[
+        WeekendApplyList.slice(0, 1),
+        WeekendApplyList.slice(1, 4),
+        WeekendApplyList.slice(4, 7),
+      ].map((it, idx) => (
+        <WeekendApplyCheckBatch
           PHPSESSID={PHPSESSID}
           sdate={sdate}
-          time={it.time}
           selectTime={selectTime}
           setSelectTime={setSelectTime}
           currentState={currentState}
           setCurrentState={setCurrentState}
-          dcls_name={it.dcls_name}
+          WeekendApplyList={it}
         />
       ))}
-      <ApplySelect
+      <WeekendApplySelect
         selectClass={selectClass}
         setSelectClass={setSelectClass}
         setApplyPregress={setApplyPregress}
@@ -114,15 +176,20 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
 }
 
 function getSdate() {
-  //   const happyNewYear = new Date();
-  //   const year = happyNewYear.getFullYear();
-  //   const month = happyNewYear.getMonth() + 1;
-  //   const date = happyNewYear.getDate();
+  let weekendDate = ['', '', ''];
 
-  //   let sdate = `${year}-${month >= 10 ? month : '0' + month}-${
-  //     date >= 10 ? date : '0' + date
-  //   }`;
-  return moment().format('YYYY-MM-DD');
+  let today = moment();
+  for (let i = 0; i <= 10; i++) {
+    if (today.day() == 6 && weekendDate[1] == '')
+      // 토요일
+      weekendDate[1] = today.format('YYYY-MM-DD');
+    if (today.day() == 0 && weekendDate[2] == '')
+      // 일요일
+      weekendDate[2] = today.format('YYYY-MM-DD');
+    today = today.add(1, 'days');
+  }
+
+  return weekendDate;
 }
 
 function getClosestWeekend() {

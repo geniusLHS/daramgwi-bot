@@ -12,14 +12,11 @@ function WeekendApply({ PHPSESSID, username, memberId }: lProps) {
   return (
     <div className="WeekendApply">
       <LeftModal PHPSESSID={PHPSESSID} username={username} />
-      {/* <WeekendApplyModal
+      <WeekendApplyModal
         PHPSESSID={PHPSESSID}
         username={username}
         memberId={memberId}
-      /> */}
-      <div className="DevelopImpossibleAlert">
-        주말이 더 이상 남지 않아서 개발 불가능
-      </div>
+      />
     </div>
   );
 }

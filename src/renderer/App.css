@@ -6,6 +6,10 @@
   font-family: 'nanumsquare', 'Sans-serif';
   /* font-family: 'Noto Sans KR', sans-serif; */
   margin: 0px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 html,
@@ -24,18 +28,17 @@ div#root {
   height: 100%;
 }
 
+/* Start */
+
 .Start .title {
-  padding-top: 30px;
-  font-size: 40px;
+  padding-top: 40px;
+  font-size: 50px;
 }
 
 .Start .subtitle {
   padding-top: 10px;
-  font-size: 18px;
-}
-
-.Start .description {
-  bottom: 0px;
+  font-size: 22px;
+  font-weight: 400;
 }
 
 /* Login */
@@ -46,14 +49,14 @@ div#root {
 }
 
 .Login input {
-  height: 40px;
-  width: 300px;
+  height: 46px;
+  width: 350px;
   border: 1px solid rgb(255, 244, 231);
   background-color: rgb(255, 244, 231);
   line-height: 20px;
   border-radius: 10px;
   padding-left: 10px;
-  font-size: 15px;
+  font-size: 17.5px;
 
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -77,26 +80,26 @@ div#root {
 }
 
 .Login .id {
-  margin: 15px;
+  margin: 17.5px;
 }
 
 .Login .pw {
-  margin: 15px;
+  margin: 17.5px;
 }
 
 .Login .btn {
-  margin: 15px;
+  margin: 17.5px;
 }
 
 .Login button {
   cursor: pointer;
-  height: 40px;
-  width: 300px;
+  height: 50px;
+  width: 350px;
   border: 1px solid #a97155;
   border-radius: 10px;
   background-color: #a97155;
   color: white;
-  font-size: 15px;
+  font-size: 17.5px;
 
   line-height: 20px;
   padding: 0;
@@ -111,6 +114,8 @@ div#root {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  font-size: 17.5px;
 }
 
 /* .DoingLogin .loadingCircle {
@@ -131,11 +136,11 @@ div#root {
 }
 
 .LeftModal .important {
-  height: 40%;
+  height: 30%;
 }
 
 .LeftModal .important .inner#name-and-point {
-  height: 94%;
+  height: 150px;
   width: 80%;
 
   margin: auto;
@@ -178,20 +183,32 @@ div#root {
   height: 40%;
   padding-top: 10px;
   line-height: 30px;
+  font-size: 15px;
 }
 
-.LeftModal .navigate {
-  height: 20%;
+.LeftModal .navigates {
+  margin-top: 10px;
+  height: 290px;
   width: 100%;
-  vertical-align: middle;
+  /* background-color: aqua; */
+}
+
+/* navigate, inner와 navigate2, inner2는 서로 구현 방식이 다름.
+inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
+
+.LeftModal .navigates .navigate {
+  height: 28%;
+  width: 100%;
+  /* vertical-align: middle; */
+  justify-content: center;
   display: flex;
 }
 
-.LeftModal .navigate .inner {
+.LeftModal .navigates .navigate .inner {
   height: 80%;
   width: 80%;
 
-  margin: auto;
+  /* margin: auto; */
   padding: 10px;
 
   box-sizing: border-box;
@@ -199,7 +216,35 @@ div#root {
 
   border-radius: 5px;
   background-color: #a97155;
-  line-height: 48px;
+  line-height: 45px;
+  color: white;
+
+  cursor: pointer;
+}
+
+.LeftModal .navigates .navigate2 {
+  height: 14%;
+  width: 80%;
+  margin-left: 10%;
+  vertical-align: middle;
+  justify-content: space-between;
+  display: flex;
+}
+
+.LeftModal .navigates .navigate2 .inner2 {
+  height: 80%;
+  width: 45%;
+
+  /* margin-left: 30%; */
+  /* margin: auto; */
+  padding: 10px;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  border-radius: 5px;
+  background-color: #a97155;
+  line-height: 12px;
   color: white;
 
   cursor: pointer;
@@ -316,9 +361,167 @@ div#root {
 }
 
 .WeekendApplyModal .title {
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 10px;
   font-size: 30px;
+}
+
+/* WeekendApplyCheckDate */
+
+.WeekendApplyCheckDate {
+  /* width와 margin-left조정으로 위치를 맞춘다. */
+  width: 312px;
+  margin-left: 147px;
+
+  height: 30px;
+  margin-bottom: 10px;
+
+  background-color: rgba(190, 140, 99, 0.3);
+  border-radius: 5px;
+
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+
+  font-size: 15px;
+}
+
+.WeekendApplyCheckDate .ApplyState {
+  width: 50%;
+  height: 80%;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+
+  cursor: pointer;
+
+  /* background-color: black; */
+  line-height: 26px;
+  padding-left: 10px;
+
+  border-left: 2px solid rgb(228, 209, 185);
+}
+
+.WeekendApplyCheckDate .ApplyState .ApplyStateChangeButton {
+  width: 25px;
+  height: 25px;
+  margin-left: 0px;
+  background-color: rgb(255, 244, 231);
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  line-height: 30px;
+}
+
+/* WeekendApplyCheck */
+
+.WeekendApplyCheck {
+  width: 100%;
+  margin: auto;
+  /* margin-bottom: 10px; */
+
+  height: 25px;
+  background-color: rgba(190, 140, 99, 0.3);
+  /* border: 2px solid #a97155; */
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.WeekendApplyCheck .ApplyState {
+  width: 10%;
+  height: 80%;
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.WeekendApplyCheck .dcls_name {
+  width: 10%;
+  height: 80%;
+  border-right: 2px solid rgb(228, 209, 185);
+  border-left: 2px solid rgb(228, 209, 185);
+
+  font-size: 12px;
+  line-height: 23px;
+}
+
+.WeekendApplyCheck .ApplyState .ApplyStateChangeButton {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  background-color: rgb(255, 244, 231);
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.WeekendApplyCheck .CurrentStateSat {
+  width: 40%;
+  height: 80%;
+  line-height: 23px;
+  font-size: 13px;
+}
+
+.WeekendApplyCheck .CurrentStateSun {
+  width: 40%;
+  height: 80%;
+  line-height: 23px;
+  font-size: 13px;
+
+  border-left: 2px solid rgb(228, 209, 185);
+}
+
+/* WeekendApplyCheckBatch*/
+
+.WeekendApplyCheckBatch {
+  width: 90%;
+  /* height: 300px; */
+  margin: auto;
+
+  display: flex;
+
+  border-radius: 5px;
+  background-color: rgba(190, 140, 99, 0.3);
+
+  padding-right: 3px;
+  margin-bottom: 8px;
+
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.WeekendApplyCheckBatch .ApplyBatchState {
+  width: 10%;
+  /* height: 80%; */
+  /* background-color: bisque; */
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.WeekendApplyCheckBatch .ApplyBatchState .ApplyBatchStateChangeButton {
+  width: 25px;
+  height: 25px;
+  margin: auto;
+  background-color: rgb(255, 244, 231);
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.WeekendApplyCheckBatch .WeekendApplyCheckArea {
+  width: 90%;
+  /* background-color: aquamarine; */
 }
 
 /* ApplySelect */
@@ -332,7 +535,7 @@ div#root {
 .ApplySelect .selectClass {
   width: 230px;
   height: 40px;
-  background-color: rgba(190, 140, 99, 0.3);
+  background-color: rgba(190, 140, 99, 0.5);
   background-size: 20px;
   padding: 5px 30px 5px 10px;
   border-radius: 4px;
@@ -398,6 +601,88 @@ div#root {
 }
 
 .ApplySelect .ApplyButton:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 0px 0px rgba(190, 140, 99, 0.3);
+}
+
+/* WeekendApplySelect */
+
+.WeekendApplySelect {
+  margin-top: 10px;
+  height: 90px;
+  /* background-color: #6c3b21; */
+}
+
+.WeekendApplySelect .selectClass {
+  width: 220px;
+  height: 35px;
+  background-color: rgba(190, 140, 99, 0.5);
+  background-size: 20px;
+  padding: 5px 30px 5px 10px;
+  border-radius: 4px;
+  /* border: 1px solid #be8c63; */
+  border: none;
+  outline: 0 none;
+}
+
+.WeekendApplySelect .selectClass option {
+  background: #6c3b21;
+  color: #fff;
+  padding: 3px 0;
+}
+
+.WeekendApplySelect .selectClass::-webkit-scrollbar {
+  width: 15px;
+}
+.WeekendApplySelect .selectClass::-webkit-scrollbar-thumb {
+  background-color: #6c3b21;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.WeekendApplySelect .selectClass::-webkit-scrollbar-track {
+  background-color: #a97155;
+  /* border-radius: 10px; */
+}
+
+.WeekendApplySelect .div-WeekendApplyButton {
+  width: 100px;
+  height: 40px;
+
+  margin-top: 10px;
+  margin-left: calc(50% - 50px);
+  display: flex;
+  align-items: center;
+}
+
+.WeekendApplySelect .WeekendApplyButton {
+  display: block;
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 35px;
+  padding: 0;
+  margin: 2px 10px 5px 0;
+  font-weight: 600;
+
+  text-align: center;
+  line-height: 40px;
+
+  color: black;
+  font-size: 18px;
+  background-color: rgb(255, 244, 231);
+
+  border: none;
+  border-radius: 5px;
+
+  transition: all 0.2s;
+
+  box-shadow: 0px 5px 0px 0px rgba(190, 140, 99, 0.3);
+  cursor: pointer;
+}
+
+.WeekendApplySelect .WeekendApplyButton:hover {
   margin-top: 15px;
   margin-bottom: 5px;
   box-shadow: 0px 0px 0px 0px rgba(190, 140, 99, 0.3);
