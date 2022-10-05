@@ -646,24 +646,32 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
   /* border-radius: 10px; */
 }
 
-.WeekendApplySelect .div-WeekendApplyButton {
+.WeekendApplySelect .Buttons {
+  width: 200px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: calc(50% - 100px);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.WeekendApplySelect .Buttons .div-WeekendApplyButton {
   width: 100px;
   height: 40px;
 
-  margin-top: 10px;
-  margin-left: calc(50% - 50px);
   display: flex;
   align-items: center;
 }
 
-.WeekendApplySelect .WeekendApplyButton {
+.WeekendApplySelect .Buttons .WeekendApplyButton {
   display: block;
   position: relative;
   float: left;
   width: 100px;
   height: 35px;
-  padding: 0;
-  margin: 2px 10px 5px 0;
+
   font-weight: 600;
 
   text-align: center;
@@ -682,7 +690,46 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
   cursor: pointer;
 }
 
-.WeekendApplySelect .WeekendApplyButton:hover {
+.WeekendApplySelect .Buttons .WeekendApplyButton:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 0px 0px rgba(190, 140, 99, 0.3);
+}
+
+.WeekendApplySelect .Buttons .div-WeekendApplyButton2 {
+  /* width: 100px; */
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+.WeekendApplySelect .Buttons .WeekendApplyButton2 {
+  display: block;
+  position: relative;
+  float: left;
+  width: 85px;
+  height: 35px;
+
+  font-weight: 500;
+
+  text-align: center;
+  line-height: 40px;
+
+  color: black;
+  font-size: 18px;
+  background-color: rgb(255, 244, 231);
+
+  border: none;
+  border-radius: 5px;
+
+  transition: all 0.2s;
+
+  box-shadow: 0px 5px 0px 0px rgba(190, 140, 99, 0.3);
+  cursor: pointer;
+}
+
+.WeekendApplySelect .Buttons .WeekendApplyButton2:hover {
   margin-top: 15px;
   margin-bottom: 5px;
   box-shadow: 0px 0px 0px 0px rgba(190, 140, 99, 0.3);

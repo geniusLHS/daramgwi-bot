@@ -10,6 +10,7 @@ interface lProps {
   currentState: string[][];
   setCurrentState: (currentState: string[][]) => void;
   dcls_name: string;
+  pushSelectTime: (time: number) => void;
 }
 
 function WeekendApplyCheck({
@@ -21,22 +22,24 @@ function WeekendApplyCheck({
   currentState,
   setCurrentState,
   dcls_name,
+  pushSelectTime,
 }: lProps) {
   return (
     <div className="WeekendApplyCheck">
       <div
         className="ApplyState"
-        onClick={() =>
-          setSelectTime(
-            selectTime.map((item, idx) => {
-              if (idx == time) {
-                return !item;
-              } else {
-                return item;
-              }
-            })
-          )
-        }
+        onClick={() => {
+          // setSelectTime(
+          //   selectTime.map((item, idx) => {
+          //     if (idx == time) {
+          //       return !item;
+          //     } else {
+          //       return item;
+          //     }
+          //   })
+          // );
+          pushSelectTime(time);
+        }}
       >
         <div className="ApplyStateChangeButton" id={time.toString()}>
           {selectTime[time] == true ? '✔' : ''}

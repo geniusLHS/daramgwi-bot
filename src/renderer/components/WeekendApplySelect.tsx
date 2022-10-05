@@ -76,16 +76,28 @@ function WeekendApplySelect({
           </option>
         ))}
       </select>
-      <div className="div-WeekendApplyButton">
-        <button
-          className="WeekendApplyButton"
-          onClick={() => {
-            setApplyPregress(1);
-            console.log('클릭되었습니다');
-          }}
-        >
-          신청
-        </button>
+      <div className="Buttons">
+        <div className="div-WeekendApplyButton">
+          <button
+            className="WeekendApplyButton"
+            onClick={() => {
+              setApplyPregress(1);
+            }}
+          >
+            신청
+          </button>
+        </div>
+        <div className="div-WeekendApplyButton2">
+          <button
+            className="WeekendApplyButton2"
+            onClick={() => {
+              setSelectClass(20);
+              setApplyPregress(1);
+            }}
+          >
+            호실 신청
+          </button>
+        </div>
       </div>
     </div>
   );

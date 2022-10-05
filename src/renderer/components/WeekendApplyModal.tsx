@@ -40,6 +40,7 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
     false,
     false,
   ]); // 첫번째꺼는 상관 없음. 1~7번만 사용함.
+  const [allSelect, setAllSelect] = useState([false, false, false, false]);
 
   const [selectWeekend, setSelectWeekend] = useState([false, false, false]);
   // 토, 일 선택
@@ -75,6 +76,7 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
         }
       setSelectTime([false, false, false, false, false, false, false, false]);
       setSelectWeekend([false, false, false]);
+      setAllSelect([false, false, false, false]);
 
       setTimeout(() => {
         getWeekendCurrentState(PHPSESSID);
@@ -164,6 +166,9 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
           currentState={currentState}
           setCurrentState={setCurrentState}
           WeekendApplyList={it}
+          allSelect={allSelect}
+          setAllSelect={setAllSelect}
+          order={idx + 1} // order : 1, 2, 3
         />
       ))}
       <WeekendApplySelect
