@@ -35,6 +35,12 @@ div#root {
   font-size: 50px;
 }
 
+.Start .title .logo {
+  margin-right: 10px;
+  position: relative;
+  top: 9px;
+}
+
 .Start .subtitle {
   padding-top: 10px;
   font-size: 22px;

@@ -2,6 +2,7 @@ import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DoingLogin from './DoingLogin';
 import Login from './Login';
+import icon from '../../../assets/icon.png';
 // import Store from 'electron-store';
 
 // 로그인을 하는 시작 페이지
@@ -96,9 +97,10 @@ function Start({
   return (
     <div className="Start">
       <h1 className="title" style={{ fontFamily: 'Merriweather, serif' }}>
+        <img className="logo" width="60" alt="Daramjwi Bot Logo" src={icon} />
         Daramjwi Bot
       </h1>
-      <h5 className="subtitle"> 대전과학고등학교 간편 자습 신청 프로그램 </h5>
+      <h5 className="subtitle">대전과학고등학교 간편 자습 신청 프로그램</h5>
       {loginProgress == 0 ? (
         <Login
           setLoginProgress={setLoginProgress}
