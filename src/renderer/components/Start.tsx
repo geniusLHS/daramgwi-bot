@@ -2,7 +2,7 @@ import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DoingLogin from './DoingLogin';
 import Login from './Login';
-import Store from 'electron-store';
+// import Store from 'electron-store';
 
 // 로그인을 하는 시작 페이지
 
@@ -31,6 +31,7 @@ function Start({
   // 2 : 로그인에 성공하여 이름과 학번을 얻는 상태
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+
   // const store = new Store();
 
   // let storedId = store.get('storedId');

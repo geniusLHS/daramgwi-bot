@@ -815,3 +815,168 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
   width: 15%;
   display: inline-block;
 }
+
+/* Information */
+
+.Information {
+  height: 100%;
+}
+
+/* Information Modal */
+
+.InformationModal {
+  float: right;
+
+  width: calc(100% - 150px);
+  height: 100%;
+}
+
+.InformationModal .title {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+
+/* InformationList */
+
+.InformationList {
+  width: 100%;
+  height: 80%;
+
+  overflow-y: auto;
+}
+
+.InformationList::-webkit-scrollbar {
+  width: 15px;
+}
+.InformationList::-webkit-scrollbar-thumb {
+  background-color: #6c3b21;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.InformationList::-webkit-scrollbar-track {
+  background-color: #a97155;
+  border-radius: 10px;
+}
+
+/* InformationItem */
+
+.InformationItem {
+  width: 90%;
+  margin-left: 5%;
+
+  margin-top: 10px;
+  height: auto;
+
+  padding: 5px 0 5px 0;
+
+  background-color: rgba(190, 140, 99, 0.15);
+  border-radius: 5px;
+
+  align-items: center;
+}
+
+.InformationItem .name {
+  width: 45%;
+  display: inline-block;
+
+  font-size: 18px;
+}
+
+.InformationItem .info {
+  width: 50%;
+
+  display: inline-block;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  border-left: 2px solid rgb(228, 209, 185);
+}
+
+/* FAQ */
+
+.FAQ {
+  height: 100%;
+}
+
+/* FAQ Modal */
+
+.FAQModal {
+  float: right;
+
+  width: calc(100% - 150px);
+  height: 100%;
+}
+
+.FAQModal .title {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+
+/* FAQList */
+
+.FAQList {
+  width: 100%;
+  height: 80%;
+
+  overflow-y: auto;
+}
+
+.FAQList::-webkit-scrollbar {
+  width: 15px;
+}
+.FAQList::-webkit-scrollbar-thumb {
+  background-color: #6c3b21;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.FAQList::-webkit-scrollbar-track {
+  background-color: #a97155;
+  border-radius: 10px;
+}
+
+/* FAQItem */
+
+.FAQItem {
+  width: 90%;
+  /* margin-left: 5%; */
+  margin: auto;
+
+  margin-top: 10px;
+  height: auto;
+
+  padding: 5px;
+
+  background-color: rgba(190, 140, 99, 0.2);
+  border-radius: 5px;
+
+  align-items: center;
+}
+
+.FAQItem .Q {
+  width: 95%;
+  display: inline-block;
+
+  font-size: 15px;
+  text-align: left;
+
+  padding: 5px;
+}
+
+.FAQItem .A {
+  width: 95%;
+
+  display: inline-block;
+
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+
+  padding: 5px;
+
+  border-top: 2px solid rgb(228, 209, 185);
+}

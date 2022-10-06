@@ -74,16 +74,12 @@ function LeftModal({ PHPSESSID, username }: lProps) {
         <div className="navigate2">
           <div
             className="inner2"
-            id="score"
-            onClick={() => navigate('/checkscore')}
+            id="information"
+            onClick={() => navigate('/information')}
           >
             info
           </div>
-          <div
-            className="inner2"
-            id="score"
-            onClick={() => navigate('/checkscore')}
-          >
+          <div className="inner2" id="FAQ" onClick={() => navigate('/faq')}>
             FAQ
           </div>
         </div>

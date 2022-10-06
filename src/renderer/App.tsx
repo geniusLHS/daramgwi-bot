@@ -5,6 +5,8 @@ import Start from './components/Start';
 import WeekdayApply from './components/WeekdayApply';
 import WeekendApply from './components/WeekendApply';
 import CheckScore from './components/CheckScore';
+import Information from './components/Information';
+import FAQ from './components/FAQ';
 
 export default function App() {
   const [PHPSESSID, setPHPSESSID] = useState('');
@@ -52,6 +54,26 @@ export default function App() {
             path="/checkscore"
             element={
               <CheckScore
+                PHPSESSID={PHPSESSID}
+                username={username}
+                memberId={memberId}
+              />
+            }
+          />
+          <Route
+            path="/information"
+            element={
+              <Information
+                PHPSESSID={PHPSESSID}
+                username={username}
+                memberId={memberId}
+              />
+            }
+          />
+          <Route
+            path="/FAQ"
+            element={
+              <FAQ
                 PHPSESSID={PHPSESSID}
                 username={username}
                 memberId={memberId}
