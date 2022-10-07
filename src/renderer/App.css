@@ -31,7 +31,7 @@ div#root {
 /* Start */
 
 .Start .title {
-  padding-top: 50px;
+  padding-top: 40px;
   font-size: 50px;
 }
 
@@ -50,7 +50,7 @@ div#root {
 /* Login */
 
 .Login {
-  margin: 50px;
+  margin: 55px;
   height: 150px;
 }
 
@@ -95,6 +95,7 @@ div#root {
 
 .Login .btn {
   margin: 17.5px;
+  /* margin-top: 30px; */
 }
 
 .Login button {
@@ -222,7 +223,7 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
 
   border-radius: 5px;
   background-color: #a97155;
-  line-height: 45px;
+  line-height: 48px;
   color: white;
 
   cursor: pointer;
@@ -250,7 +251,7 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
 
   border-radius: 5px;
   background-color: #a97155;
-  line-height: 12px;
+  line-height: 15px;
   color: white;
 
   cursor: pointer;
@@ -273,7 +274,7 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
 
 .WeekdayApplyModal .title {
   padding-top: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   font-size: 30px;
 }
 
@@ -368,7 +369,7 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
 
 .WeekendApplyModal .title {
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   font-size: 30px;
 }
 
@@ -615,7 +616,7 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
 /* WeekendApplySelect */
 
 .WeekendApplySelect {
-  margin-top: 10px;
+  margin-top: 16px;
   height: 90px;
   /* background-color: #6c3b21; */
 }
