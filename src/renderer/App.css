@@ -31,14 +31,21 @@ div#root {
 /* Start */
 
 .Start .title {
-  padding-top: 40px;
+  padding-top: 50px;
   font-size: 50px;
+  /* background-color: #6c3b21; */
 }
 
 .Start .title .logo {
   margin-right: 10px;
   position: relative;
+  display: inline-block;
   top: 9px;
+
+  background-image: url('img/icon.png');
+  height: 55px;
+  width: 55px;
+  background-size: 55px;
 }
 
 .Start .subtitle {
