@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CheckScoreItem from './CheckScoreItem';
@@ -43,8 +44,26 @@ function CheckScoreModal({ PHPSESSID, username, memberId }: lProps) {
     // console.log(pListRawText);
     // // console.log(resultRaw.split('내용 포인트 부과교사 ')[1]);
     // let result = '벌점 목록 ( 합계 ' + pTotal + '점 )\n';
+    let year = moment().year();
+    let month = moment().month();
+    // console.log(pListRawText);
+    let pListRaw: string[] = [''];
 
-    let pListRaw = pListRawText.split('2022-');
+    // 1. 만약 y년이고 3월~12월인 경우
+    // 'y-'으로만 split하면 된다.
+    // 2. 만약 y년이고 1월~2월인 경우
+    // '(y-1)-'으로 먼저 split한 뒤 첫번쨰 원소를 'y-'으로 split하는 과정을 거친다.
+
+    if (month >= 3) {
+      pListRaw = pListRawText.split(year.toString() + '-');
+    } else if (month <= 2) {
+      pListRaw = pListRawText.split((year - 1).toString() + '-');
+      if (pListRaw.length > 0)
+        pListRaw = pListRaw[0]
+          .split(year.toString() + '-')
+          .concat(pListRaw.slice(1));
+    }
+
     for (let i = 1; i < pListRaw.length; i++) {
       let item = pListRaw[i];
       pList[i] = { date: '01-01', content: '새해', point: '-1' };

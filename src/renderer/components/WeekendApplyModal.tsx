@@ -118,6 +118,9 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
     ];
 
     // i=1 토요일, i=2 일요일
+
+    let day = moment().day();
+
     for (let i = 1; i <= 2; i++)
       for (let j = 1; j <= 7; j++) {
         let date = ' ';
@@ -125,12 +128,15 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
         if (i == 1) date = '토요일';
         if (i == 2) date = '일요일';
 
-        ApplyState[i][j] = resultRaw
-          .split(date)[1]
-          .split('신청일 전날 22시까지 신청이 완료되지 않을 경우')[1]
-          .split(col_name[j])[1]
-          .split('</td>')[1]
-          .split('<td>')[1];
+        if (day == 6 && i == 1)
+          ApplyState[i][j] = ''; // 토요일이면 일요일 결과만 반환.
+        else
+          ApplyState[i][j] = resultRaw
+            .split(date)[1]
+            .split('신청일 전날 22시까지 신청이 완료되지 않을 경우')[1]
+            .split(col_name[j])[1]
+            .split('</td>')[1]
+            .split('<td>')[1];
       }
 
     for (let i = 1; i <= 2; i++)

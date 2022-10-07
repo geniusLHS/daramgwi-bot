@@ -295,12 +295,12 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
 
 .WeekdayApplyModal .describe .selectState {
   float: left;
-  margin-left: 45px;
+  margin-left: 47px;
 }
 
 .WeekdayApplyModal .describe .currentState {
   float: left;
-  margin-left: 163px;
+  margin-left: 167px;
 }
 
 /* WeekdayApplyCheck */
@@ -352,6 +352,42 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
   width: 70%;
   height: 100%;
   line-height: 40px;
+}
+
+/* WeekdayApplyModal_Weekend */
+
+.WeekdayApplyModal_Weekend {
+  float: right;
+
+  width: calc(100% - 150px);
+  height: 100%;
+}
+
+.WeekdayApplyModal_Weekend .title {
+  padding-top: 30px;
+  padding-bottom: 70px;
+  font-size: 30px;
+}
+
+.WeekdayApplyModal_Weekend .icon_die {
+  background-image: url('img/icon_die.png');
+
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
+
+  display: flex;
+  margin: auto;
+}
+
+.WeekdayApplyModal_Weekend .describe {
+  /* padding-top: 150px; */
+  /* padding-bottom: 10px; */
+  margin-bottom: 15px;
+
+  font-size: 20px;
+
+  /* font-weight: 600; */
 }
 
 /* WeekendApply */
