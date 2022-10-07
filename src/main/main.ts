@@ -251,6 +251,7 @@ const createWindow = async () => {
     width: 640,
     height: 480,
     resizable: false,
+    fullscreenable: false,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: app.isPackaged
@@ -259,6 +260,7 @@ const createWindow = async () => {
     },
   });
 
+  mainWindow.setMenuBarVisibility(false);
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
   mainWindow.on('ready-to-show', () => {

@@ -31,7 +31,7 @@ div#root {
 /* Start */
 
 .Start .title {
-  padding-top: 40px;
+  padding-top: 50px;
   font-size: 50px;
 }
 
@@ -194,7 +194,7 @@ div#root {
 
 .LeftModal .navigates {
   margin-top: 10px;
-  height: 290px;
+  height: 305px;
   width: 100%;
   /* background-color: aqua; */
 }
