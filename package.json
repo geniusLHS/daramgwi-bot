@@ -186,7 +186,7 @@
     "webpack-merge": "^5.8.0"
   },
   "build": {
-    "productName": "Daramjwi Bot 1.0",
+    "productName": "Daramjwi Bot 1.1",
     "appId": "org.erb.DaramjwiBot",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",

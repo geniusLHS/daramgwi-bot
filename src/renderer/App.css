@@ -2,6 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
 /* @import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css'); */
 
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 * {
   font-family: 'nanumsquare', 'Sans-serif';
   /* font-family: 'Noto Sans KR', sans-serif; */
@@ -365,7 +378,7 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
 
 .WeekdayApplyModal_Weekend .title {
   padding-top: 30px;
-  padding-bottom: 70px;
+  padding-bottom: 65px;
   font-size: 30px;
 }
 
@@ -378,6 +391,8 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
 
   display: flex;
   margin: auto;
+
+  /* animation: rotate 10s infinite linear; */
 }
 
 .WeekdayApplyModal_Weekend .describe {
@@ -783,6 +798,43 @@ inner2는 정보, FAQ 탭을 위해 만들어졌기 때문임. */
   margin-top: 15px;
   margin-bottom: 5px;
   box-shadow: 0px 0px 0px 0px rgba(190, 140, 99, 0.3);
+}
+
+/* WeekendApplyModal_Sunday */
+
+.WeekendApplyModal_Sunday {
+  float: right;
+
+  width: calc(100% - 150px);
+  height: 100%;
+}
+
+.WeekendApplyModal_Sunday .title {
+  padding-top: 30px;
+  padding-bottom: 65px;
+  font-size: 30px;
+}
+
+.WeekendApplyModal_Sunday .icon_die {
+  background-image: url('img/icon_monday.png');
+
+  /* 580 * 430 */
+  width: 209px;
+  height: 155px;
+  background-size: 209px;
+
+  display: flex;
+  margin: auto;
+}
+
+.WeekendApplyModal_Sunday .describe {
+  /* padding-top: 150px; */
+  /* padding-bottom: 10px; */
+  margin-bottom: 15px;
+
+  font-size: 20px;
+
+  /* font-weight: 600; */
 }
 
 /* CheckScore */

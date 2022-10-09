@@ -41,7 +41,7 @@ function Login({
             name="input_id"
             value={inputId}
             onChange={handleInputId}
-            placeholder="아이디"
+            placeholder="학번"
           />
         </div>
         <div className="pw">
