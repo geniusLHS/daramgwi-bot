@@ -121,15 +121,19 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
 
     let day = moment().day();
 
-    for (let i = 1; i <= 2; i++)
+    for (let i = 1; i <= 2; i++) {
+      let notExist = false;
+      let date = ' ';
+
+      if (i == 1) date = '토요일';
+      if (i == 2) date = '일요일';
+
+      if (resultRaw.indexOf(date) == -1) notExist = true;
+
       for (let j = 1; j <= 7; j++) {
-        let date = ' ';
-
-        if (i == 1) date = '토요일';
-        if (i == 2) date = '일요일';
-
         if (day == 6 && i == 1)
           ApplyState[i][j] = ''; // 토요일이면 일요일 결과만 반환.
+        else if (notExist == true) ApplyState[i][j] = '';
         else
           ApplyState[i][j] = resultRaw
             .split(date)[1]
@@ -138,6 +142,7 @@ function WeekendApplyModal({ PHPSESSID, username, memberId }: lProps) {
             .split('</td>')[1]
             .split('<td>')[1];
       }
+    }
 
     for (let i = 1; i <= 2; i++)
       for (let j = 1; j <= 7; j++)

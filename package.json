@@ -1,5 +1,5 @@
 {
-  "description": "A foundation for scalable desktop apps",
+  "description": "Daramjwi Bot",
   "keywords": [
     "electron",
     "boilerplate",
@@ -186,7 +186,7 @@
     "webpack-merge": "^5.8.0"
   },
   "build": {
-    "productName": "Daramjwi Bot 1.1",
+    "productName": "Daramjwi Bot",
     "appId": "org.erb.DaramjwiBot",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
