@@ -13,7 +13,7 @@ const informations = [
   { name: '버전', info: '1.1' },
   { name: '개발자', info: '37기 이현서' },
   { name: 'License', info: 'MIT License' },
-  { name: 'Build date', info: '2022-10-09' },
+  { name: 'Build date', info: '2022-10-10' },
 ];
 
 function InformationModal() {
